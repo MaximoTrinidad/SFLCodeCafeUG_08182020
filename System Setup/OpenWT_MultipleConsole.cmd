@@ -1,0 +1,1 @@
+wt -p "Ubuntu-18.04" ; split-pane -p "Ubuntu-18.04" -d "\\wsl$\Ubuntu-18.04\home\maxt"; split-pane -p "PowerShell" -d "C:\Temp" -H

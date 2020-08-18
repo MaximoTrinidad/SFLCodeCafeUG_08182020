@@ -1,0 +1,74 @@
+## - Install xrdp:
+sudo apt install xrdp 
+
+## - Install GUI desktop components:(Pick - "gdm3")
+sudo apt install xfce4 
+sudo apt install xfce4-goodies
+
+## - XRDP config changes:
+sudo cp /etc/xrdp/xrdp.ini /etc/xrdp/xrdp.ini.bak
+sudo sed -i 's/3389/3390/g' /etc/xrdp/xrdp.ini
+sudo sed -i 's/max_bpp=32/#max_bpp=32\nmax_bpp=128/g' /etc/xrdp/xrdp.ini
+sudo sed -i 's/xserverbpp=24/#xserverbpp=24\nxserverbpp=128/g' /etc/xrdp/xrdp.ini
+
+## - Verify changes in xrdp.ini:
+cat /etc/xrdp/xrdp.ini
+
+## - Create xfce4 session:
+echo xfce4-session > ~/.xsession
+
+## - Use editor to edit Linux Windows Manager file:
+sudo vim /etc/xrdp/startwm.sh
+
+: -> Comment Out the last two lines, then add next four lines:
+
+## - To Prevent error about mounted xrpd thin-client drive:
+umount -f xrdp-chansrv
+
+# xfce4
+startxfce4
+
+:wq
+
+## - ===========================
+## - Remove thinclient_drives errors:
+sudo service xrdp stop
+
+sudo umount $HOME/thinclient_drives
+sudo rmdir thinclient_drives
+
+## - Start xrdp service again after ini fix:
+sudo service xrdp start
+
+## - ===========================
+
+## - Firewall allow from anywhere:
+sudo ufw allow 3390/tcp
+
+## - Service xrdp: 
+## - Usage: /etc/init.d/xrdp {start|stop|status|restart|try-restart|force-reload}
+sudo service xrdp status
+sudo service xrdp start
+
+## - Get WSL2 IP-Address:
+ip addr
+
+## - In Windows 10: 
+Open Windows Remote Desktop
+Connect to:
+[WSL2-IPAddress]:3390
+signin
+-xorg
+-userid
+-password
+
+## - In XFCE4 Session - Installing Chrome Browser:
+cd Downloads
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb
+
+## - (Optional) Run command in case of having issues witn installation of Chrome:
+sudo apt --fix-broken install
+
+
+

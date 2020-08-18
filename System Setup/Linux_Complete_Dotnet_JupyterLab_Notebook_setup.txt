@@ -1,0 +1,121 @@
+## - SQL Server 2019 Installation - Ubuntu + (MS Tools)
+https://docs.microsoft.com/en-us/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-ver15
+
+## - Install .NET Interactive:
+https://github.com/dotnet/interactive
+https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004-
+
+## - Microsoft package signing key to your list of trusted keys and add the package repository.
+wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+
+## - Install SDK (Linux)
+sudo apt-get update; \
+  sudo apt-get install -y apt-transport-https && \
+  sudo apt-get update && \
+  sudo apt-get install -y dotnet-sdk-3.1
+
+## Install Runtime (Linux)
+sudo apt-get install -y aspnetcore-runtime-3.1
+
+## - Install MSTools and ODBC 17 (Linux)
+sudo apt-get install mssql-tools unixodbc-dev
+
+
+## - Add Tools paths to the bashrc file:
+echo 'export PATH="$PATH:~/.dotnet/tools"' >> ~/.bashrc
+echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+
+## - Or, Add the path manually:
+## - Open editor "vim" to add paths to the bashrc file:
+	$ sudo vim ~/.bashrc
+	:
+	## - Add path to .NET Tools:
+	export PATH=$PATH:~/.dotnet/tools
+
+	## - Add MS ODBC Tools:
+	export PATH=$PATH:/opt/mssql-tools/bin
+:wq
+
+## - Refresh Environment session after adding the paths:
+source ~/.bashrc
+
+## - Install global tools:
+dotnet tool install --global Microsoft.dotnet-interactive
+dotnet tool install --global PowerShell
+
+## - Download and Install Anaconda: February 2020 edition:
+cd Downloads
+wget https://repo.anaconda.com/archive/Anaconda3-2020.02-wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
+bash Anaconda3-2020.02-Linux-x86_64.sh
+
+## - Additional Components for SQL module:
+conda install pyodbc
+conda install nodejs
+pip install ipython-sql
+conda install ipykernel
+
+## - Install Plotly for browser-based graphing library:
+conda install plotly
+
+## - To clear issue in Windows setup:
+python -m ipykernel install --user
+
+## Spark Kernels installation:
+pip install sparkmagic
+jupyter nbextension enable --py --sys-prefix widgetsnbextension 
+
+ # - Next step takes a few minutes to complete:
+jupyter labextension install "@jupyter-widgets/jupyterlab-manager"
+
+## - The following step give you the path of the Spark Kernel to be installed:
+pip show sparkmagic
+
+-------sample output-------------------
+-Name: sparkmagic
+-Version: 0.15.0
+-Summary: SparkMagic: Spark execution via Livy
+-Home-page: https://github.com/jupyter-incubator/sparkmagic
+-Author: Jupyter Development Team
+-Author-email: jupyter@googlegroups.org
+-License: BSD 3-clause
+-Location: /home/maxt/anaconda3/lib/python3.7/site-packages
+--------------------------
+
+## - Use the Sparkmagic output location & proceed to install kernels:
+## -> Linux:
+ jupyter-kernelspec install /home/maxt/anaconda3/lib/python3.7/site-packages/sparkmagic/kernels/sparkkernel --user
+ jupyter-kernelspec install /home/maxt/anaconda3/lib/python3.7/site-packages/sparkmagic/kernels/pysparkkernel --user
+ jupyter-kernelspec install /home/maxt/anaconda3/lib/python3.7/site-packages/sparkmagic/kernels/sparkrkernel --user
+## -> Windows:
+ jupyter-kernelspec install c:\programdata\anaconda3\lib\site-packages\sparkmagic\kernels\sparkkernel --user
+ jupyter-kernelspec install c:\programdata\anaconda3\lib\site-packages\sparkmagic\kernels\pysparkkernel --user
+ jupyter-kernelspec install c:\programdata\anaconda3\lib\site-packages\sparkmagic\kernels\sparkrkernel --user
+
+## - Install .NET Kernels:
+dotnet interactive jupyter install
+
+## - List all existing Kernels:
+jupyter kernelspec list
+
+## - Update .NET Tools to latest version:
+dotnet tool list --global
+dotnet tool update -g --add-source "https://dotnet.myget.org/F/dotnet-try/api/v3/index.json" Microsoft.dotnet-interactive
+dotnet tool update --global PowerShell
+
+## -
+## - Completing configuring Jupyter Lab component to support SQL Engines:
+## - 
+pip install jupyterlab_sql
+jupyter serverextension enable jupyterlab_sql
+
+## - Build Jupyter Lab - it will take a few minutes:
+jupyter lab build
+
+## - Start Jupyter Lab:
+jupyter lab
+
+## - Test SQLAlchemy Python SQL Tool:
+Jupyter Lab -> SQL : mssql+pyodbc://sa:$SqlPwd01!@10.0.0.230:1449/sampledb1?driver=ODBC+Driver+17+for+SQL+Server
+
+
