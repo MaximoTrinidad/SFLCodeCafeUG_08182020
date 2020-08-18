@@ -34,4 +34,4 @@ Bonus material includes:
 >_**Please, this is For-Education-Only. Don't use in Production!**_
 
 # Recorded video available:
-SAPIEN YouTube Channel, video "Working with .NET Interactive Notebooks": https://youtu.be/_r3dKTm6cZ4
+SAPIEN YouTube Channel, video "Working with .NET Interactive Notebooks": (coming)
