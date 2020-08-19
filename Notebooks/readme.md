@@ -5,3 +5,4 @@ These are the Notebook files to be use in the Jupyter Lab demo.
 - SampleMixingKernels.ipynb
 - SMOCrossPlatform01.ipynb
 - MSSqlSample02.ipynb
+- MSSqlServerSample01.ipynb
