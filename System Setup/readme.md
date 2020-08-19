@@ -1,4 +1,4 @@
-#System Setup
+# System Setup
 The following text file contains the steps to setup Jupyter and XRDP in WSL 2 System:
 - Linux_Complete_Dotnet_JupyterLab_Notebook_setup.txt
 - Linux_Setup_XRDP_In_Ubuntu_2020.txt
