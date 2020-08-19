@@ -18,7 +18,7 @@ This session will give you all you need to quickly understand and use .NET Inter
 4. Anaconda Jupyter Lab (v1.x)
 5. SQLAlchemy - Python SQL Tool for MS SQL Server.
 6. .NET Interactive PowerShell Notebook
-7. Editors: PrimalScript.
+7. Code Editors: Short demo with PrimalScript.
 
 # Demo scripts:
 Includes step-by-step in how-to customized your system to work with Notebooks.
