@@ -1,4 +1,4 @@
-Session flow
+Propose Session flow
 
 Intro Speaker 
 
@@ -41,29 +41,19 @@ Notebook Apps
 	  * No installation required
 
 Demo
-
 Prepare Session
 - WTerm start SQLServer WSL2
 - WSL 2 Ubuntu GUI thru RDP
 
 Building a Notebook
 - Show Nteract and Binder
-
 - Jupyter Lab
 - Kernels available
 - Basic Markdown
 - Mixing Kernels and other tools (SQL)
 - Working with SQL Server 
   * SMO
-  * SQLArchemy
+  * SQLAlchemy
   * Plotting
 - Github Repo
-
-
-Run in Windows Insider:
-## -=> Windows Terminal Demo using DOS: (opens 3 Ubuntu consoles)
-wt -p "Ubuntu-18.04" ; split-pane -p "Ubuntu-18.04" -d "\\wsl$\Ubuntu-18.04\home\maxt"; split-pane -p "PowerShell" -d "C:\Temp" -H
-
-mssql+pyodbc://sa:$SqlPwd01!@10.0.0.230:1449/sampledb1?driver=ODBC+Driver+17+for+SQL+Server
-
 
