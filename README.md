@@ -1,8 +1,3 @@
-# Topic: "Working with .NET Interactive Notebooks"
-
-Abstract:
-This session will give you all you need to quickly understand and use .NET Interactive Notebooks. Use any of the existing familiar languages, or ones that you're not: C#, F#, PowerShell, and Python. Start creating and sharing notebooks. Also, if you don't want to install .NET Interactive but want to test drive this technology, we'll be looking at "Binder". Come and join us in this session!
-
 
 Try the Jupyter Interactive Notebooks in MyBinder. No installs needed.
 
